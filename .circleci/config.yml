@@ -9,7 +9,7 @@ jobs:
     docker:
       - image: "node:8.17"
     steps:
-      - attach_workspace
+      - checkout
       - sonarcloud/scan
 
   build-and-test:
@@ -21,7 +21,6 @@ jobs:
           steps:
             - run: npm install
             - run: npm run lint
-      - persist_to_workspace
       
 workflows:
   checks:
@@ -29,5 +28,3 @@ workflows:
       - build-and-test
       - static-code-analysis:
           context: SonarCloud
-          requires:
-            - build-and-test
