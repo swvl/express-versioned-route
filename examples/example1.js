@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+// eslint-disable-next-line import/no-unresolved
 const app = require('express')();
 const { versionsDef } = require('../index');
 
