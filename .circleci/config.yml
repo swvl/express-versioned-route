@@ -5,13 +5,6 @@ orbs:
   node: circleci/node@1.1.6
 
 jobs:
-  # build:
-
-  #   steps:
-  #     - checkout
-  #     - run:
-  #         name: Install dependencies and build project
-  #         command: npm run install
   static-code-analysis:
     docker:
       - image: "node:8.17"
@@ -27,14 +20,8 @@ jobs:
           steps:
             - run: npm install
             # - run: npm test
-  
-
 workflows:
-  # main:
-  #   jobs:
-  #     - build:
-  #       context: SonarCloud
-  build-and-test:
+  checks:
     jobs:
       - build-and-test
       - static-code-analysis:
