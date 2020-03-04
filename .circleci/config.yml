@@ -5,15 +5,14 @@ orbs:
   node: circleci/node@1.1.6
 
 jobs:
-  build:
-    docker:
-      - image: "node:8.17"
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies and build project
-          command: npm run install
-      - sonarcloud/scan
+  # build:
+  #   docker:
+  #     - image: "node:8.17"
+  #   steps:
+  #     - checkout
+  #     - run:
+  #         name: Install dependencies and build project
+  #         command: npm run install
   build-and-test:
     executor:
       name: node/default
@@ -23,12 +22,14 @@ jobs:
           steps:
             - run: npm install
             # - run: npm test
+      - sonarcloud/scan
 
 workflows:
-  main:
-    jobs:
-      - build:
-          context: SonarCloud
+  # main:
+  #   jobs:
+  #     - build:
+  #       context: SonarCloud
   build-and-test:
     jobs:
-      - build-and-test
+      - build-and-test:
+        context: SonarCloud
