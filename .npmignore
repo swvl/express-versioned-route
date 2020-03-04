@@ -1,0 +1,9 @@
+# Ignore List
+*
+
+# Exceptions List
+!lib/**
+!index.js
+!package.json
+!README.md
+!CHANGELOG.md
