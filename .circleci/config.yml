@@ -20,9 +20,12 @@ jobs:
           steps:
             - run: npm install
             # - run: npm test
+      - sonarcloud/scan
+
 workflows:
   checks:
     jobs:
-      - build-and-test
+      - build-and-test:
+          context: SonarCloud
       - static-code-analysis:
           context: SonarCloud
