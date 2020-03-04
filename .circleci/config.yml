@@ -1,21 +1,34 @@
 version: 2.1
 
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.1
+  node: circleci/node@1.1.6
+
 jobs:
   build:
     docker:
-      - image: 'node:8.17'
+      - image: "node:8.17"
     steps:
       - checkout
       - run:
           name: Install dependencies and build project
           command: npm run install
       - sonarcloud/scan
-
-orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.1
+  build-and-test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+            # - run: npm test
 
 workflows:
   main:
     jobs:
       - build:
           context: SonarCloud
+  build-and-test:
+    jobs:
+      - build-and-test
