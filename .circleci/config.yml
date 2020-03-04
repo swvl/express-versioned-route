@@ -22,7 +22,7 @@ jobs:
           steps:
             - run: npm install
             # - run: npm test
-      - sonarcloud/scan
+            - sonarcloud/scan
 
 workflows:
   # main:
