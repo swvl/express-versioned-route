@@ -11,14 +11,6 @@ references:
       at: *workspace_root
 
 jobs:
-  static-code-analysis:
-    docker:
-      - image: "node:8.17"
-    working_directory: *workspace_root
-    steps:
-      - *attach_workspace
-      - sonarcloud/scan
-
   build-and-test:
     executor:
       name: node/default
@@ -34,6 +26,14 @@ jobs:
           root: *workspace_root
           paths:
             - .
+
+  static-code-analysis:
+    docker:
+      - image: "node:8.17"
+    working_directory: *workspace_root
+    steps:
+      - *attach_workspace
+      - sonarcloud/scan
 
 workflows:
   checks:
