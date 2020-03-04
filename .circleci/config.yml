@@ -6,13 +6,18 @@ orbs:
 
 jobs:
   # build:
-  #   docker:
-  #     - image: "node:8.17"
+
   #   steps:
   #     - checkout
   #     - run:
   #         name: Install dependencies and build project
   #         command: npm run install
+  static-code-analysis:
+    # docker:
+      # - image: "node:8.17"    steps:
+    steps:
+      - sonarcloud/scan
+
   build-and-test:
     executor:
       name: node/default
@@ -22,7 +27,7 @@ jobs:
           steps:
             - run: npm install
             # - run: npm test
-            - sonarcloud/scan
+  
 
 workflows:
   # main:
@@ -31,5 +36,6 @@ workflows:
   #       context: SonarCloud
   build-and-test:
     jobs:
-      - build-and-test:
-        context: SonarCloud
+      - build-and-test
+      - static-code-analysis:
+          context: SonarCloud
