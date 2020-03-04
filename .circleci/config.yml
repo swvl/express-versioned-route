@@ -13,8 +13,8 @@ jobs:
   #         name: Install dependencies and build project
   #         command: npm run install
   static-code-analysis:
-    # docker:
-      # - image: "node:8.17"    steps:
+    docker:
+      - image: "node:8.17"
     steps:
       - sonarcloud/scan
 
