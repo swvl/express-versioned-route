@@ -31,7 +31,7 @@ jobs:
       - persist_to_workspace:
           root: *workspace_root
           paths:
-            - /
+            - .
 
 workflows:
   checks:
