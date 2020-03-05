@@ -44,7 +44,7 @@ jobs:
       - run: npm run release
 
 workflows:
-  ci/cd:
+  "ci/cd":
     jobs:
       - build-and-test
       - static-code-analysis:
