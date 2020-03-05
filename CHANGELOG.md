@@ -1,3 +1,10 @@
+# [1.1.0-next.1](https://github.com/swvl/express-versioned-route/compare/v1.0.0...v1.1.0-next.1) (2020-03-08)
+
+
+### Features
+
+* move example1 to run inside RunKit ([63a9d12](https://github.com/swvl/express-versioned-route/commit/63a9d12e27071a9cc85fcd04c3faa1b1b4c85530)), closes [#8](https://github.com/swvl/express-versioned-route/issues/8)
+
 # 1.0.0 (2020-03-05)
 
 
