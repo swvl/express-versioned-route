@@ -1,5 +1,5 @@
 {
-  "name": "express-versioned-route",
+  "name": "@swvl/express-versioned-route",
   "version": "1.0.0",
   "description": "Simple express.js 4.x extension, to add support for versioned routes.",
   "main": "index.js",
