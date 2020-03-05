@@ -56,4 +56,4 @@ app.get('/search', mw1, mw2, searchVersionDef);
 
 ## License
 
-[Apache-2.0](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
+[Apache-2.0](<https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)>)
