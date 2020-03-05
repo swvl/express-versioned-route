@@ -35,7 +35,7 @@ jobs:
       - *attach_workspace
       - sonarcloud/scan
 
-  dry-publish:
+  publish:
     docker:
       - image: "node:10"
     working_directory: *workspace_root
@@ -55,3 +55,8 @@ workflows:
           context: semantic-release
           requires:
             - static-code-analysis
+          filters:
+            branches:
+              only: 
+                - master
+                - next
