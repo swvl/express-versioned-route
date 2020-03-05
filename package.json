@@ -9,12 +9,9 @@
     "routes"
   ],
   "homepage": "https://github.com/swvl/express-versioned-route",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/swvl/express-versioned-route"
-  },
+  "repository": "https://github.com/swvl/express-versioned-route",
   "bugs": {
-    "url": "https://github.com/swvl/express-versioned-route",
+    "url": "https://github.com/swvl/express-versioned-route/issues/new",
     "email": "mahmoud.samy@swvl.com"
   },
   "private": false,
