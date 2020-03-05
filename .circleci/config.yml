@@ -44,7 +44,7 @@ jobs:
       - run: npm run release
 
 workflows:
-  checks:
+  ci/cd:
     jobs:
       - build-and-test
       - static-code-analysis:
@@ -55,8 +55,8 @@ workflows:
           context: semantic-release
           requires:
             - static-code-analysis
-          filters:
-            branches:
-              only: 
-                - master
-                - next
+          # filters:
+          #   branches:
+          #     only: 
+          #       - master
+          #       - next
