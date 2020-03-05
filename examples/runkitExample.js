@@ -1,9 +1,5 @@
-/* eslint-disable no-console */
-// eslint-disable-next-line import/no-unresolved
-const app = require('express')();
-const { versionsDef } = require('../index');
-
-const port = 8000;
+const app = require('@runkit/runkit/express-endpoint/1.0.0')(exports); // Replace this line by normal express app
+const { versionsDef } = require('@swvl/express-versioned-route');
 
 const mwDef = name => (req, res, next) => {
   console.log(` > Middleware: ${name}`);
@@ -30,12 +26,8 @@ const searchHandlerV3 = (req, res) => {
 };
 
 const searchHandlerV4 = (req, res) => {
-  res.status(200).send('search handler v3');
+  res.status(200).send('search handler v4');
 };
-
-// curl -s -H 'accept-version: dynamicSearch' localhost:8000/search
-// curl -s -H 'accept-version: superSearch' localhost:8000/search
-// curl -s -H 'accept-version: superSearch' localhost:8000/search
 
 const searchVersionDef = versionsDef({
   versions: {
@@ -55,6 +47,6 @@ const searchVersionDef = versionsDef({
   ],
 });
 
-app.get('/search', mw1, mw2, searchVersionDef);
+app.get('/', mw1, mw2, searchVersionDef);
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+process.env.RUNKIT_ENDPOINT_URL;
