@@ -1,6 +1,7 @@
 ---
 branches: ["master", "next", "semantic-release"]
 tagFormat: v${version}
+repositoryUrl: "https://github.com/swvl/express-versioned-route"
 plugins:
   - "@semantic-release/commit-analyzer"
   - "@semantic-release/release-notes-generator"
