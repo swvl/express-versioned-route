@@ -15,6 +15,9 @@
     "email": "mahmoud.samy@swvl.com"
   },
   "private": false,
+  "publishConfig": {
+    "access": "public"    
+  },
   "engines": {
     "node": ">=8.0.0"
   },

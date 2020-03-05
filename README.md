@@ -28,7 +28,7 @@ Simple express.js 4.x extension, to add support for versioned routes.
 
 ## Install
 
-`npm install express-versioned-route`
+`npm install @swvl/express-versioned-route`
 
 ## Usage
 
