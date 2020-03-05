@@ -29,7 +29,7 @@ jobs:
   
   static-code-analysis:
     docker:
-      - image: "node:8.17"
+      - image: "node:10"
     working_directory: *workspace_root
     steps:
       - *attach_workspace
@@ -37,7 +37,7 @@ jobs:
 
   dry-publish:
     docker:
-      - image: "node:8.17"
+      - image: "node:10"
     working_directory: *workspace_root
     steps:
       - *attach_workspace
@@ -47,11 +47,12 @@ workflows:
   checks:
     jobs:
       - build-and-test
-      - static-code-analysis:
-          context: SonarCloud
-          requires:
-            - build-and-test
+      # TODO: re-enable static-code-analysis
+      # - static-code-analysis:
+      #     context: SonarCloud
+      #     requires:
+      #       - build-and-test
       - dry-publish:
           context: semantic-release
           requires:
-            - static-code-analysis
+            - build-and-test # TODO: revert back to static-code-analysis
