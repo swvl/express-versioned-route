@@ -1,6 +1,6 @@
 {
   "name": "express-versioned-route",
-  "version": "1.0.0",
+  "version": "1.0.0-next.1",
   "description": "Simple express.js 4.x extension, to add support for versioned routes.",
   "main": "index.js",
   "keywords": [
