@@ -24,7 +24,8 @@
   "engineStrict": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "node_modules/.bin/eslint ."
+    "lint": "node_modules/.bin/eslint .",
+    "release": "node_modules/.bin/semantic-release --dry-run"
   },
   "author": "Swvl <opensource@swvl.com>",
   "license": "Apache-2.0",
