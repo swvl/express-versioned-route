@@ -41,18 +41,17 @@ jobs:
     working_directory: *workspace_root
     steps:
       - *attach_workspace
-      - run: npm run release -- --dry-run
+      - run: npm run release
 
 workflows:
   checks:
     jobs:
       - build-and-test
-      # TODO: re-enable static-code-analysis
-      # - static-code-analysis:
-      #     context: SonarCloud
-      #     requires:
-      #       - build-and-test
-      - dry-publish:
+      - static-code-analysis:
+          context: SonarCloud
+          requires:
+            - build-and-test
+      - publish:
           context: semantic-release
           requires:
-            - build-and-test # TODO: revert back to static-code-analysis
+            - static-code-analysis
