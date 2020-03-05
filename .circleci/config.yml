@@ -46,7 +46,8 @@ jobs:
 workflows:
   ci:
     jobs:
-      - build-and-test
+      - build-and-test:
+        context: semantic-release
       - static-code-analysis:
           context: SonarCloud
           requires:
