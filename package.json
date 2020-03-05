@@ -1,6 +1,6 @@
 {
-  "name": "express-versioned-route",
-  "version": "1.0.0",
+  "name": "@swvl/express-versioned-route",
+  "version": "1.0.0-next.3",
   "description": "Simple express.js 4.x extension, to add support for versioned routes.",
   "main": "index.js",
   "keywords": [
@@ -9,33 +9,39 @@
     "routes"
   ],
   "homepage": "https://github.com/swvl/express-versioned-route",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/swvl/express-versioned-route"
-  },
+  "repository": "https://github.com/swvl/express-versioned-route",
   "bugs": {
-    "url": "https://github.com/swvl/express-versioned-route",
+    "url": "https://github.com/swvl/express-versioned-route/issues/new",
     "email": "mahmoud.samy@swvl.com"
   },
   "private": false,
+  "publishConfig": {
+    "access": "public"    
+  },
   "engines": {
     "node": ">=8.0.0"
   },
   "engineStrict": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "node_modules/.bin/eslint ."
+    "lint": "node_modules/.bin/eslint .",
+    "release": "node_modules/.bin/semantic-release"
   },
   "author": "Swvl <opensource@swvl.com>",
   "license": "Apache-2.0",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.17.1"
+  },
   "devDependencies": {
+    "@semantic-release/changelog": "^5.0.0",
+    "@semantic-release/git": "^9.0.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "6.10.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "3.1.2",
-    "prettier": "1.19.1"
+    "prettier": "1.19.1",
+    "semantic-release": "^17.0.4"
   },
   "peerDependencies": {
     "express": "^4.17.1"

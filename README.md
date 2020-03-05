@@ -28,7 +28,7 @@ Simple express.js 4.x extension, to add support for versioned routes.
 
 ## Install
 
-`npm install express-versioned-route`
+`npm install @swvl/express-versioned-route`
 
 ## Usage
 
@@ -56,4 +56,4 @@ app.get('/search', mw1, mw2, searchVersionDef);
 
 ## License
 
-[Apache-2.0](https://tldrlegal.com/license/apache-license-2.0-(apache-2.0))
+[Apache-2.0](<https://tldrlegal.com/license/apache-license-2.0-(apache-2.0)>)

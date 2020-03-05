@@ -1,0 +1,62 @@
+version: 2.1
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.1
+  node: circleci/node@1.1.6
+
+references:
+  workspace_root: &workspace_root /tmp/workspace
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace_root
+
+jobs:
+  build-and-test:
+    executor:
+      name: node/default
+    working_directory: *workspace_root
+    steps:
+      - *attach_workspace
+      - checkout
+      - node/with-cache:
+          steps:
+            - run: npm install
+            - run: npm run lint
+      - persist_to_workspace:
+          root: *workspace_root
+          paths:
+            - .
+
+  static-code-analysis:
+    docker:
+      - image: "node:10"
+    working_directory: *workspace_root
+    steps:
+      - *attach_workspace
+      - sonarcloud/scan
+
+  publish:
+    docker:
+      - image: "node:10"
+    working_directory: *workspace_root
+    steps:
+      - *attach_workspace
+      - run: npm run release
+
+workflows:
+  ci:
+    jobs:
+      - build-and-test
+      - static-code-analysis:
+          context: SonarCloud
+          requires:
+            - build-and-test
+      - publish:
+          context: semantic-release
+          requires:
+            - static-code-analysis
+          filters:
+            branches:
+              only:
+                - master
+                - next
