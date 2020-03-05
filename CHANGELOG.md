@@ -1,3 +1,10 @@
+# 1.0.0 (2020-03-05)
+
+
+### Features
+
+* init release ([#1](https://github.com/swvl/express-versioned-route/issues/1)) ([e7739ec](https://github.com/swvl/express-versioned-route/commit/e7739ece9f1f6eac5384bbf13f483872ec59d71c))
+
 # [1.0.0-next.3](https://github.com/swvl/express-versioned-route/compare/v1.0.0-next.2...v1.0.0-next.3) (2020-03-05)
 
 
