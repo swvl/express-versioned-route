@@ -17,4 +17,13 @@ module.exports = {
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'no-use-before-define': ['error', { functions: false }],
   },
+  "overrides": [
+    {
+      "files": ["examples/*.js"],
+      "rules": {
+        "import/no-unresolved": "off",
+        "no-unused-expressions": "off"
+      }
+    }
+  ],
 };
