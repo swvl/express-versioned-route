@@ -1,3 +1,10 @@
+# [1.1.0-next.2](https://github.com/swvl/express-versioned-route/compare/v1.1.0-next.1...v1.1.0-next.2) (2020-03-08)
+
+
+### Bug Fixes
+
+* version selector middelware ([7426004](https://github.com/swvl/express-versioned-route/commit/7426004f3d6860f5dea501b98fe5dcb59fbb0a1d))
+
 # [1.1.0-next.1](https://github.com/swvl/express-versioned-route/compare/v1.0.0...v1.1.0-next.1) (2020-03-08)
 
 
