@@ -23,15 +23,14 @@
   },
   "engineStrict": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "node_modules/.bin/eslint .",
+    "test": "node_modules/.bin/mocha test/",
+    "coverage": "node_modules/.bin/nyc npm run test",
     "release": "node_modules/.bin/semantic-release"
   },
   "author": "Swvl <opensource@swvl.com>",
   "license": "Apache-2.0",
-  "dependencies": {
-    "express": "^4.17.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
@@ -40,8 +39,12 @@
     "eslint-config-prettier": "6.10.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "3.1.2",
+    "express": "^4.17.1",
+    "mocha": "^7.1.0",
+    "nyc": "^15.0.0",
     "prettier": "1.19.1",
-    "semantic-release": "^17.0.4"
+    "semantic-release": "^17.0.4",
+    "supertest": "^4.0.2"
   },
   "peerDependencies": {
     "express": "^4.17.1"
