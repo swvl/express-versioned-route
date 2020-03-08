@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/swvl/express-versioned-route/compare/v1.1.0...v1.1.1) (2020-03-08)
+
+
+### Bug Fixes
+
+* runkit example ([3a76631](https://github.com/swvl/express-versioned-route/commit/3a7663138c5603e15fa5c1c4c3d464e192ee17d3))
+
 # [1.1.0](https://github.com/swvl/express-versioned-route/compare/v1.0.0...v1.1.0) (2020-03-08)
 
 
