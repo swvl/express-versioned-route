@@ -46,5 +46,5 @@
   "peerDependencies": {
     "express": "^4.17.1"
   },
-  "runkitExample": "examples/runkitExample.js"
+  "runkitExampleFilename": "examples/runkitExample.js"
 }
