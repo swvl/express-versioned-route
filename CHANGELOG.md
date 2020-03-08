@@ -1,3 +1,15 @@
+# [1.1.0](https://github.com/swvl/express-versioned-route/compare/v1.0.0...v1.1.0) (2020-03-08)
+
+
+### Bug Fixes
+
+* version selector middelware ([6440e09](https://github.com/swvl/express-versioned-route/commit/6440e0969b903138698462c374d0b8ca77322658))
+
+
+### Features
+
+* move example1 to run inside RunKit ([a00eda9](https://github.com/swvl/express-versioned-route/commit/a00eda979b2dac1f4a40479acf3aef1bf006ee87)), closes [#8](https://github.com/swvl/express-versioned-route/issues/8)
+
 # [1.1.0-next.2](https://github.com/swvl/express-versioned-route/compare/v1.1.0-next.1...v1.1.0-next.2) (2020-03-08)
 
 
