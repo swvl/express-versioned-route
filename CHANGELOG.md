@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/swvl/express-versioned-route/compare/v1.1.2...v1.1.3) (2020-03-09)
+
+
+### Bug Fixes
+
+* run-kit location ([6dad532](https://github.com/swvl/express-versioned-route/commit/6dad532032477c89f432770222ec2d6b4ed25747))
+
 ## [1.1.2](https://github.com/swvl/express-versioned-route/compare/v1.1.1...v1.1.2) (2020-03-09)
 
 
