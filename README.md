@@ -5,6 +5,7 @@ Simple express.js 4.x extension, to add support for versioned routes.
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=swvl_express-versioned-route&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=swvl_express-versioned-route)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=swvl_express-versioned-route&metric=security_rating)](https://sonarcloud.io/dashboard?id=swvl_express-versioned-route)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=swvl_express-versioned-route&metric=alert_status)](https://sonarcloud.io/dashboard?id=swvl_express-versioned-route)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=swvl_express-versioned-route&metric=coverage)](https://sonarcloud.io/dashboard?id=swvl_express-versioned-route)
 [![GitHub issues](https://img.shields.io/github/issues/swvl/express-versioned-route.svg)](https://GitHub.com/swvl/express-versioned-route/issues/)
 [![GitHub issues-closed](https://img.shields.io/github/issues-closed/swvl/express-versioned-route.svg)](https://GitHub.com/swvl/express-versioned-route/issues?q=is%3Aissue+is%3Aclosed)
 
