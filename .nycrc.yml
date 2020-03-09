@@ -1,0 +1,15 @@
+all: true
+check-coverage: true
+include: 
+  - lib/**/*.js
+lines: [90, 100]
+statements: [90, 100]
+functions: [90, 100]
+branches: [90, 100]
+reporter:
+  - text
+  - text-summary
+  - html
+  - lcov
+cache: false
+report-dir: "./coverage"

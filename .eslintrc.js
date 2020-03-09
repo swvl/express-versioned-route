@@ -8,12 +8,12 @@ module.exports = {
   env: {
     node: true,
     es6: true,
+    commonjs: true,
+    mocha: true
   },
   rules: {
     'prettier/prettier': 'error',
     'comma-dangle': 'off',
-    // 'linebreak-style': ['error', 'windows'],
-    // 'operator-linebreak': ['error', 'after'],
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'no-use-before-define': ['error', { functions: false }],
   },
