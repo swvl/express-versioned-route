@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/swvl/express-versioned-route/compare/v1.1.1...v1.1.2) (2020-03-09)
+
+
+### Bug Fixes
+
+* versionSelectorMiddleware ([5a39f2a](https://github.com/swvl/express-versioned-route/commit/5a39f2aba94ba2b5cb6e94e5b73978c8c642cabb))
+
 ## [1.1.1](https://github.com/swvl/express-versioned-route/compare/v1.1.0...v1.1.1) (2020-03-08)
 
 
