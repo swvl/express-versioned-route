@@ -19,7 +19,7 @@ module.exports = {
   },
   "overrides": [
     {
-      "files": ["examples/*.js"],
+      "files": ["runkit-example.js"],
       "rules": {
         "import/no-unresolved": "off",
         "no-unused-expressions": "off"
