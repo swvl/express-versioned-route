@@ -5,6 +5,12 @@ const { expect } = require('chai');
 const app = require('express')();
 const { versionsDef } = require('../index');
 
+const removeEmptyProps = input => {
+  const obj = clone(input);
+  Object.keys(obj).forEach(key => (obj[key] === undefined ? delete obj[key] : {}));
+  return obj;
+};
+
 describe('Example 1', () => {
   const process = (name, req) => {
     if (!req.processingOrder) {
@@ -59,7 +65,7 @@ describe('Example 1', () => {
     it(test.title, done => {
       request(app)
         .get('/search')
-        .set(test.reqHeaderName, test.reqHeaderValue)
+        .set(removeEmptyProps(test.config))
         .expect(test.expectedResponseCode)
         .end((err, res) => {
           if (!test.shouldSuccess) return done();
@@ -69,7 +75,7 @@ describe('Example 1', () => {
         });
     });
 
-  describe('mobile header', () => {
+  describe('mobile headers', () => {
     [
       [undefined, undefined, false],
       ['android', undefined, false],
@@ -78,6 +84,7 @@ describe('Example 1', () => {
       ['windows', 400, false],
       ['windows', 999, false],
 
+      ['Android', undefined, false],
       ['Android', 100, false],
       ['Android', 300, false],
       ['Android', 399, false],
@@ -96,6 +103,7 @@ describe('Example 1', () => {
       ['AnDrOid', 999, true, ['mw1', 'mw2', 'v3']],
       ['android', 999, true, ['mw1', 'mw2', 'v3']],
 
+      ['iOS', undefined, false],
       ['iOS', 100, false],
       ['iOS', 300, false],
       ['iOS', 399, false],
@@ -114,8 +122,10 @@ describe('Example 1', () => {
       .map(testAr => {
         return {
           title: `${testAr[0]}-${testAr[1]} should processed by ${testAr[2] ? testAr[3] : '404'}`,
-          reqHeaderName: testAr[0] ? 'mobile' : 'x-invalid-header-name',
-          reqHeaderValue: testAr[1] ? `${testAr[0]}-${testAr[1]}` : '',
+          config: {
+            'device-os': testAr[0],
+            'build-number': testAr[1],
+          },
           shouldSuccess: testAr[2],
           expectedResponseCode: testAr[2] ? 200 : 404,
           expectedResponse: JSON.stringify(testAr[3]),
@@ -138,8 +148,9 @@ describe('Example 1', () => {
         .map(testAr => {
           return {
             title: `${testAr[0]} should processed by ${testAr[1] ? testAr[2] : '404'}`,
-            reqHeaderName: 'accept-version',
-            reqHeaderValue: testAr[0],
+            config: {
+              'accept-version': testAr[0],
+            },
             shouldSuccess: testAr[1],
             expectedResponseCode: testAr[1] ? 200 : 404,
             expectedResponse: JSON.stringify(testAr[2]),

@@ -53,6 +53,11 @@ const searchVersionDef = versionsDef({
 app.get('/search', mw1, mw2, searchVersionDef);
 ```
 
+#### Expected user headers
+
+* device-os & build-number
+* accept-version
+
 [![Try it live on RunKit](https://badge.runkitcdn.com/@swvl/express-versioned-route.svg)](https://npm.runkit.com/@swvl/express-versioned-route)
 
 ## License
