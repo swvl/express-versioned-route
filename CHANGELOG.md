@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/swvl/express-versioned-route/compare/v1.1.3...v2.0.0) (2020-03-11)
+
+
+### Features
+
+* refactor versioning headers ([d67ed6f](https://github.com/swvl/express-versioned-route/commit/d67ed6f4a1463cac7f85da5a7f58adbd68b1083a))
+
+
+### BREAKING CHANGES
+
+* client headers has been changed
+
 ## [1.1.3](https://github.com/swvl/express-versioned-route/compare/v1.1.2...v1.1.3) (2020-03-09)
 
 
