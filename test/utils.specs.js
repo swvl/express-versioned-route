@@ -1,7 +1,7 @@
 const { describe, it } = require('mocha');
 const { expect } = require('chai');
 const clone = require('rfdc')();
-const { toArray, peekAsJson } = require('../lib/utils');
+const { toArray, peekAsJson, regexTrans } = require('../lib/utils');
 
 const expectDeepEquals = test =>
   it(test.title, () => {
@@ -55,5 +55,24 @@ describe('Utils', () => {
         };
       })
       .forEach(expectDeepEquals);
+  });
+
+  describe('regexTrans', () => {
+    const regexTransThatThrowsError = regexTrans(/^he(l{2,})o$/, ar => {
+      throw new Error('random error', ar);
+    });
+
+    ['hello', 'helllllo', 'help', 22]
+      .map((data, index) => {
+        return {
+          title: `Test case #${index + 1}`,
+          input: clone(data),
+        };
+      })
+      .forEach(test => {
+        it(test.title, () => {
+          expect(() => regexTransThatThrowsError(test.input)).to.not.throw();
+        });
+      });
   });
 });
