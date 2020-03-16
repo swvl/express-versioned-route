@@ -5,6 +5,7 @@ const {
   validValidator,
   invalidValidator,
   validator,
+  fieldValidator,
   validateArrayMembers,
 } = require('../lib/validators');
 const predicates = require('../lib/predicates');
@@ -37,6 +38,37 @@ describe('Validators', () => {
       return it(generateTestTitle(test), () => {
         expect(() => invalidValidator(test)).to.throw(ValidationError, 'invalid input');
       });
+    });
+  });
+
+  describe('fieldValidator', () => {
+    it('invalid evalPredicate function', () => {
+      const isOldEnoughValidator = fieldValidator(
+        "user isn't old enough",
+        () => false,
+        () => true,
+      );
+      expect(() => isOldEnoughValidator(80)).to.throw(ValidationError, 'evalPredicate');
+    });
+    it('invalid inputMapper function', () => {
+      const isOldEnoughValidator = fieldValidator(
+        "user isn't old enough",
+        flag => flag,
+        () => true,
+      );
+      expect(() => isOldEnoughValidator(80)).to.throw(ValidationError, 'inputMapper');
+    });
+    it('invalid input type should equal undefined', () => {
+      const testValidator = fieldValidator('regex test', predicates.isString, input =>
+        /test/.test(input),
+      );
+      expect(testValidator(12)).to.equal(undefined);
+    });
+    it('invalid input to regex should test should evaluates to false ', () => {
+      const testValidator = fieldValidator('regex test', predicates.isString, input =>
+        /test/.test(input),
+      );
+      expect(testValidator('12')).to.equal(false);
     });
   });
 

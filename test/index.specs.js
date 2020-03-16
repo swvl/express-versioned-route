@@ -11,40 +11,40 @@ const removeEmptyProps = input => {
   return obj;
 };
 
+const process = (name, req) => {
+  if (!req.processingOrder) {
+    req.processingOrder = [];
+  }
+  req.processingOrder.push(name);
+};
+const mwDef = name => (req, res, next) => {
+  process(name, req);
+  next();
+};
+const searchHandler = version => (req, res) => {
+  process(version, req);
+  res.status(200).send(JSON.stringify(req.processingOrder));
+};
+
+const mw1 = mwDef('mw1');
+const mw2 = mwDef('mw2');
+const searchMW1 = mwDef('searchMW1');
+const searchMW2 = mwDef('searchMW2');
+const dynamicSearchMW1 = mwDef('dynamicSearchMW1');
+const dynamicSearchMW2 = mwDef('dynamicSearchMW2');
+const deepSearchMW = mwDef('deepSearchMW');
+
+const searchHandlerV1 = searchHandler('v1');
+const searchHandlerV2 = searchHandler('v2');
+const searchHandlerV3 = searchHandler('v3');
+const searchHandlerV4 = searchHandler('v4');
+
 describe('Example 1', () => {
-  const process = (name, req) => {
-    if (!req.processingOrder) {
-      req.processingOrder = [];
-    }
-    req.processingOrder.push(name);
-  };
-  const mwDef = name => (req, res, next) => {
-    process(name, req);
-    next();
-  };
-  const searchHandler = version => (req, res) => {
-    process(version, req);
-    res.status(200).send(JSON.stringify(req.processingOrder));
-  };
-
-  const mw1 = mwDef('mw1');
-  const mw2 = mwDef('mw2');
-  const searchMW1 = mwDef('searchMW1');
-  const searchMW2 = mwDef('searchMW2');
-  const dynamicSearchMW1 = mwDef('dynamicSearchMW1');
-  const dynamicSearchMW2 = mwDef('dynamicSearchMW2');
-  const deepSearchMW = mwDef('deepSearchMW');
-
-  const searchHandlerV1 = searchHandler('v1');
-  const searchHandlerV2 = searchHandler('v2');
-  const searchHandlerV3 = searchHandler('v3');
-  const searchHandlerV4 = searchHandler('v4');
-
   const searchVersionDef = versionsDef({
     versions: {
       simpleSearch: ['2020-Q1', searchMW1, searchMW2, searchHandlerV1],
       dynamicSearch: [dynamicSearchMW1, dynamicSearchMW2, searchHandlerV2],
-      superSearch: [searchHandlerV3],
+      superSearch: [searchHandlerV3, 'default'],
       deepSearch: [deepSearchMW, searchHandlerV4],
     },
     Android: [
@@ -77,17 +77,17 @@ describe('Example 1', () => {
 
   describe('mobile headers', () => {
     [
-      [undefined, undefined, false],
-      ['android', undefined, false],
-      ['windows', undefined, false],
-      ['windows', 100, false],
-      ['windows', 400, false],
-      ['windows', 999, false],
+      [undefined, undefined, true, ['mw1', 'mw2', 'v3']],
+      ['android', undefined, true, ['mw1', 'mw2', 'v3']],
+      ['windows', undefined, true, ['mw1', 'mw2', 'v3']],
+      ['windows', 100, true, ['mw1', 'mw2', 'v3']],
+      ['windows', 400, true, ['mw1', 'mw2', 'v3']],
+      ['windows', 999, true, ['mw1', 'mw2', 'v3']],
 
-      ['Android', undefined, false],
-      ['Android', 100, false],
-      ['Android', 300, false],
-      ['Android', 399, false],
+      ['Android', undefined, true, ['mw1', 'mw2', 'v3']],
+      ['Android', 100, true, ['mw1', 'mw2', 'v3']],
+      ['Android', 300, true, ['mw1', 'mw2', 'v3']],
+      ['Android', 399, true, ['mw1', 'mw2', 'v3']],
       ['Android', 400, true, ['mw1', 'mw2', 'searchMW1', 'searchMW2', 'v1']],
       ['Android', 401, true, ['mw1', 'mw2', 'searchMW1', 'searchMW2', 'v1']],
       ['Android', 440, true, ['mw1', 'mw2', 'searchMW1', 'searchMW2', 'v1']],
@@ -103,10 +103,10 @@ describe('Example 1', () => {
       ['AnDrOid', 999, true, ['mw1', 'mw2', 'v3']],
       ['android', 999, true, ['mw1', 'mw2', 'v3']],
 
-      ['iOS', undefined, false],
-      ['iOS', 100, false],
-      ['iOS', 300, false],
-      ['iOS', 399, false],
+      ['iOS', undefined, true, ['mw1', 'mw2', 'v3']],
+      ['iOS', 100, true, ['mw1', 'mw2', 'v3']],
+      ['iOS', 300, true, ['mw1', 'mw2', 'v3']],
+      ['iOS', 399, true, ['mw1', 'mw2', 'v3']],
       ['iOS', 400, true, ['mw1', 'mw2', 'searchMW1', 'searchMW2', 'v1']],
       ['iOS', 401, true, ['mw1', 'mw2', 'searchMW1', 'searchMW2', 'v1']],
       ['iOS', 440, true, ['mw1', 'mw2', 'searchMW1', 'searchMW2', 'v1']],
@@ -134,16 +134,21 @@ describe('Example 1', () => {
       .forEach(runTestCase);
   });
 
+  const toLowerCase = str => {
+    return str ? str.toLowerCase() : undefined;
+  };
+
   describe('accept-version header', () => {
     [
       ['simpleSearch', true, ['mw1', 'mw2', 'searchMW1', 'searchMW2', 'v1']],
       ['dynamicSearch', true, ['mw1', 'mw2', 'dynamicSearchMW1', 'dynamicSearchMW2', 'v2']],
       ['superSearch', true, ['mw1', 'mw2', 'v3']],
+      [undefined, true, ['mw1', 'mw2', 'v3']],
       ['deepSearch', true, ['mw1', 'mw2', 'deepSearchMW', 'v4']],
     ].forEach(testCase => {
       const newTestCases = [clone(testCase), clone(testCase), clone(testCase)];
-      newTestCases[1][0] = newTestCases[1][0].toLowerCase();
-      newTestCases[2][0] = newTestCases[2][0].toUpperCase();
+      newTestCases[1][0] = toLowerCase(newTestCases[1][0]);
+      newTestCases[2][0] = toLowerCase(newTestCases[2][0]);
       newTestCases
         .map(testAr => {
           return {
@@ -157,6 +162,58 @@ describe('Example 1', () => {
           };
         })
         .forEach(runTestCase);
+    });
+  });
+});
+
+describe('Invalid config', () => {
+  describe('invalid versions section', () => {
+    [
+      [
+        'multiple default',
+        {
+          simpleSearch: ['2020-Q1', searchMW1, searchMW2, searchHandlerV1, 'default'],
+          dynamicSearch: [dynamicSearchMW1, dynamicSearchMW2, searchHandlerV2],
+          superSearch: [searchHandlerV3, 'default'],
+          deepSearch: [deepSearchMW, searchHandlerV4],
+        },
+      ],
+      [
+        'no defaults',
+        {
+          simpleSearch: ['2020-Q1', searchMW1, searchMW2, searchHandlerV1],
+          dynamicSearch: [dynamicSearchMW1, dynamicSearchMW2, searchHandlerV2],
+          superSearch: [searchHandlerV3],
+          deepSearch: [deepSearchMW, searchHandlerV4],
+        },
+      ],
+      [
+        'no defaults',
+        {
+          simpleSearch: ['2020-Q1', searchMW1, searchMW2, searchHandlerV1],
+          dynamicSearch: [dynamicSearchMW1, dynamicSearchMW2, searchHandlerV2],
+          superSearch: [searchHandlerV3],
+          deepSearch: [deepSearchMW, searchHandlerV4],
+        },
+      ],
+      [
+        'invalid date',
+        {
+          simpleSearch: ['2020-Q8', searchMW1, searchMW2, searchHandlerV1],
+          dynamicSearch: [dynamicSearchMW1, dynamicSearchMW2, searchHandlerV2],
+          superSearch: [searchHandlerV3],
+          deepSearch: [deepSearchMW, searchHandlerV4],
+        },
+      ],
+    ].forEach(testCase => {
+      it(testCase[0], () => {
+        const testFunc = () => {
+          versionsDef({
+            versions: clone(testCase[1]),
+          });
+        };
+        expect(testFunc).to.throw();
+      });
     });
   });
 });
