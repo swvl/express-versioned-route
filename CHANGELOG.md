@@ -1,3 +1,17 @@
+# [2.1.0](https://github.com/swvl/express-versioned-route/compare/v2.0.0...v2.1.0) (2020-03-16)
+
+
+### Bug Fixes
+
+* soft deprecation ([6e2f405](https://github.com/swvl/express-versioned-route/commit/6e2f40592021205692972ad936057b423f7d2ffe)), closes [#4](https://github.com/swvl/express-versioned-route/issues/4)
+
+
+### Features
+
+* add support for a default version ([0f193ab](https://github.com/swvl/express-versioned-route/commit/0f193ab4add6b678f637c1792457a099edea5597)), closes [#9](https://github.com/swvl/express-versioned-route/issues/9)
+* add support for lib configuration ([567723d](https://github.com/swvl/express-versioned-route/commit/567723deadd19ce58655222fdf470f695bbfa14f)), closes [#23](https://github.com/swvl/express-versioned-route/issues/23)
+* add support for multiple clients ([d533fba](https://github.com/swvl/express-versioned-route/commit/d533fba7b001ac7b7e317f79f8a6278c37c0f268)), closes [#21](https://github.com/swvl/express-versioned-route/issues/21)
+
 # [2.0.0](https://github.com/swvl/express-versioned-route/compare/v1.1.3...v2.0.0) (2020-03-11)
 
 
