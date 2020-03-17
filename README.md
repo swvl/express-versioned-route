@@ -60,7 +60,7 @@ app.get('/search', mw1, mw2, searchVersionDef);
 * device-os & build-number
 * accept-version
 
-[![Try it live on RunKit](https://badge.runkitcdn.com/@swvl/express-versioned-route.svg)](https://npm.runkit.com/@swvl/express-versioned-route)
+[![Try it live on RunKit](https://badge.runkitcdn.com/@swvl/express-versioned-route.svg)](https://runkit.com/swvl/express-versioned-route)
 
 ## Options
 
