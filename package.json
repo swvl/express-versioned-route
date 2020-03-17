@@ -54,7 +54,6 @@
   "peerDependencies": {
     "express": "^4.17.1"
   },
-  "runkitExampleFilename": "runkit-example.js",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
