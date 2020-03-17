@@ -21,11 +21,11 @@ Simple express.js 4.x extension, to add support for versioned routes.
 - Versioning the same route
 - Loading time validation
 - Custom middlewares for each version
-- ~~Built-in soft deprecation policy~~ (to be added soon)
+- Built-in soft deprecation policy
 - Case insensitive name matching
 - Minimal overhead ( less than 0.15ms/request )
 - Dynamic routing based on client headers
-- Client can choose the version using `accept-version` header
+- Client can choose specific version using `accept-version` header
 
 ## Install
 
@@ -34,10 +34,10 @@ Simple express.js 4.x extension, to add support for versioned routes.
 ## Usage
 
 ```
-const searchVersionDef = versionsDef({
+const searchVersionDef = versionsDef()({
   versions: {
     simpleSearch: ['2020-Q1', searchMW1, searchMW2, searchHandlerV1],
-    dynamicSearch: [dynamicSearchMW1, dynamicSearchMW2, searchHandlerV2],
+    dynamicSearch: [dynamicSearchMW1, dynamicSearchMW2, searchHandlerV2, 'default'],
     superSearch: [searchHandlerV3],
     deepSearch: [searchHandlerV4],
   },
@@ -61,6 +61,31 @@ app.get('/search', mw1, mw2, searchVersionDef);
 * accept-version
 
 [![Try it live on RunKit](https://badge.runkitcdn.com/@swvl/express-versioned-route.svg)](https://npm.runkit.com/@swvl/express-versioned-route)
+
+## Options
+
+Global options can be passed as 1st parameter for versionsDef function, or configured as part of versionsDef specs
+
+#### Example
+```
+const searchVersionDef = versionsDef(globalOptions)({
+  versions: {
+    ...
+  }
+  ...,
+  options: {
+    ...
+  }
+});
+```
+
+#### Supported options
+
+| prop name 	| description 	| default 	|
+|---	|---	|---	|
+| onDeprecated 	| callback `(versionName, req)=> {}` 	| prints a warning on console 	|
+| allowClientRequestFallbackToDefaultVersion 	| invalid client headers will fallback to default version instead of 404 	| true 	|
+
 
 ## License
 

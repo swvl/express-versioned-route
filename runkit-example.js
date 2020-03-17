@@ -27,10 +27,10 @@ const searchHandlerV2 = searchHandler('v2');
 const searchHandlerV3 = searchHandler('v3');
 const searchHandlerV4 = searchHandler('v4');
 
-const searchVersionDef = versionsDef({
+const searchVersionDef = versionsDef()({
   versions: {
     simpleSearch: ['2020-Q1', searchMW1, searchMW2, searchHandlerV1],
-    dynamicSearch: [dynamicSearchMW1, dynamicSearchMW2, searchHandlerV2],
+    dynamicSearch: [dynamicSearchMW1, dynamicSearchMW2, searchHandlerV2, 'default'],
     superSearch: [searchHandlerV3],
     deepSearch: [deepSearchMW, searchHandlerV4],
   },
