@@ -26,6 +26,7 @@
     "lint": "node_modules/.bin/eslint .",
     "test": "node_modules/.bin/mocha test/",
     "coverage": "node_modules/.bin/nyc npm run test",
+    "upload-coverage": "npm run coverage && ./node_modules/.bin/codecov -f coverage/lcov.info",
     "release": "node_modules/.bin/semantic-release"
   },
   "author": "Swvl <opensource@swvl.com>",
@@ -35,6 +36,7 @@
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
     "chai": "^4.2.0",
+    "codecov": "^3.6.5",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.1.0",
     "eslint": "^6.8.0",
