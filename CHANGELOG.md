@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/swvl/express-versioned-route/compare/v2.1.0...v2.1.1) (2020-03-23)
+
+
+### Bug Fixes
+
+* **release:** introduce a patch release on docs(README) & refactor commits ([775da4b](https://github.com/swvl/express-versioned-route/commit/775da4beb989116cde50e53cad80016f32cd4112))
+
 # [2.1.0](https://github.com/swvl/express-versioned-route/compare/v2.0.0...v2.1.0) (2020-03-16)
 
 
