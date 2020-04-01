@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/swvl/express-versioned-route/compare/v2.1.1...v2.2.0) (2020-04-01)
+
+
+### Features
+
+* support custom headers for client selection ([adc382b](https://github.com/swvl/express-versioned-route/commit/adc382b724df3408fdd7c9cee9d3d7b96eb31931))
+
 ## [2.1.1](https://github.com/swvl/express-versioned-route/compare/v2.1.0...v2.1.1) (2020-03-23)
 
 
