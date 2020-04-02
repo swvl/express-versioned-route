@@ -43,11 +43,6 @@ describe('versionsDef', () => {
   const defineNewApp = localOptions => {
     const globalOptions = {
       allowClientRequestFallbackToDefaultVersion: true,
-      onDeprecated: (versionName, req) => {
-        console.log(
-          `WARNING: received a call to a deprecated version: ${versionName}, req.url: ${req.url}`,
-        );
-      },
     };
     const app = express();
     const searchVersionDef = versionsDef(globalOptions)({
