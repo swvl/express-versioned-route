@@ -81,10 +81,44 @@ const searchVersionDef = versionsDef(globalOptions)({
 
 #### Supported options
 
-| prop name 	| description 	| default 	|
-|---	|---	|---	|
-| onDeprecated 	| callback `(versionName, req)=> {}` 	| prints a warning on console 	|
-| allowClientRequestFallbackToDefaultVersion 	| invalid client headers will fallback to default version instead of 404 	| true 	|
+<table>
+<tr>
+  <td> <b> prop name </b> </td>
+  <td> <b> description </b> </td>
+  <td> <b> default </b> </td>
+</tr>
+  
+<tr>
+  <td> onDeprecated </td>
+  <td> callback  </td>
+  <td>
+    <pre>
+(versionName, req)=> {} 
+    </pre>
+  </td>
+</tr>
+
+<tr>
+  <td> allowClientRequestFallbackToDefaultVersion </td>
+  <td> invalid client headers will fallback to default version instead of 404 </td>
+  <td> true </td>
+</tr>
+
+<tr>
+  <td> onClientSelection </td>
+  <td> configure how client should be selected based on req </td>
+  <td> 
+    <pre>
+onClientSelection: req => {
+  return {
+    name: req.headers['device-os'],
+    buildNumber: req.headers['build-number'],
+  };
+}
+    </pre>
+  </td>
+</tr>
+</table>
 
 
 ## License
