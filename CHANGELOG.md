@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/swvl/express-versioned-route/compare/v2.2.2...v2.2.3) (2020-04-08)
+
+
+### Bug Fixes
+
+* **release:** change release rule to match cz format ([4c70df3](https://github.com/swvl/express-versioned-route/commit/4c70df386c0026fe42d9b1d4c29fba0b561b47bb))
+
 ## [2.2.2](https://github.com/swvl/express-versioned-route/compare/v2.2.1...v2.2.2) (2020-04-08)
 
 
