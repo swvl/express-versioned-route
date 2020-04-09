@@ -33,7 +33,7 @@ Simple express.js 4.x extension, to add support for versioned routes.
 
 ## Usage
 
-```
+```js
 const searchVersionDef = versionsDef()({
   versions: {
     simpleSearch: ['2020-Q1', searchMW1, searchMW2, searchHandlerV1],
@@ -67,7 +67,7 @@ app.get('/search', mw1, mw2, searchVersionDef);
 Global options can be passed as 1st parameter for versionsDef function, or configured as part of versionsDef specs
 
 #### Example
-```
+```js
 const searchVersionDef = versionsDef(globalOptions)({
   versions: {
     ...
