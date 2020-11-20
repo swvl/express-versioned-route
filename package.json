@@ -50,7 +50,7 @@
     "nyc": "^15.1.0",
     "prettier": "1.19.1",
     "rfdc": "^1.1.4",
-    "semantic-release": "^17.1.1",
+    "semantic-release": "^17.2.3",
     "supertest": "^4.0.2"
   },
   "peerDependencies": {
