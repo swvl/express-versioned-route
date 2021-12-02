@@ -30,7 +30,7 @@ jobs:
 
   static-code-analysis:
     docker:
-      - image: "node:10"
+      - image: "node:12"
     working_directory: *workspace_root
     steps:
       - *attach_workspace
@@ -38,7 +38,7 @@ jobs:
 
   publish:
     docker:
-      - image: "node:10"
+      - image: "node:12"
     working_directory: *workspace_root
     steps:
       - *attach_workspace
