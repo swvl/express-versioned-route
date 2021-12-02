@@ -147,6 +147,7 @@ describe('versionsDef', () => {
     const app = defineNewApp({
       allowClientRequestFallbackToDefaultVersion: false,
       onDeprecated: versionName => {
+        // eslint-disable-next-line no-console
         console.log(`WARNING: received a call to a deprecated version: ${versionName}`);
       },
     });
