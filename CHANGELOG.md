@@ -1,3 +1,12 @@
+## [2.2.4](https://github.com/swvl/express-versioned-route/compare/v2.2.3...v2.2.4) (2021-12-02)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([c47146d](https://github.com/swvl/express-versioned-route/commit/c47146d4c96440902f04bb33f21e5e17baa4eaca))
+* upgrade eslint-config-airbnb-base from 14.0.0 to 14.1.0 ([a212e99](https://github.com/swvl/express-versioned-route/commit/a212e990ccf0d5eb2e00269883bed6ca3fb2ee82))
+* upgrade eslint-config-airbnb-base from 14.0.0 to 14.1.0 ([77acf46](https://github.com/swvl/express-versioned-route/commit/77acf46f16aee3a6368239cdae5b8c71d52b59cc))
+
 ## [2.2.3](https://github.com/swvl/express-versioned-route/compare/v2.2.2...v2.2.3) (2020-04-08)
 
 
