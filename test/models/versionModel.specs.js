@@ -62,14 +62,12 @@ describe('parseDeprecationDate', () => {
       ['2030-12'],
       ['2030-13'],
     ]
-      .map(testAr => {
-        return {
-          title: `${testAr[0]} should be ${testAr[1] ? 'valid' : 'invalid'}`,
-          input: [testAr[0]],
-          expectOutput: testAr[1] && testAr[1].getTime(),
-        };
-      })
-      .forEach(test => {
+      .map((testAr) => ({
+        title: `${testAr[0]} should be ${testAr[1] ? 'valid' : 'invalid'}`,
+        input: [testAr[0]],
+        expectOutput: testAr[1] && testAr[1].getTime(),
+      }))
+      .forEach((test) => {
         it(test.title, () => {
           const output = parseDeprecationDate(test.input);
           expect(output && output.getTime()).to.equals(test.expectOutput);

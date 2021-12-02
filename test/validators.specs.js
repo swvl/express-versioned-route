@@ -10,7 +10,7 @@ const {
 } = require('../lib/validators');
 const predicates = require('../lib/predicates');
 
-const generateTestTitle = input => JSON.stringify(input) || 'undefined';
+const generateTestTitle = (input) => JSON.stringify(input) || 'undefined';
 
 describe('Validators', () => {
   const data = [
@@ -26,19 +26,19 @@ describe('Validators', () => {
   ];
 
   describe('validValidator', () => {
-    data.forEach(test => {
-      return it(generateTestTitle(test), () => {
+    data.forEach((test) =>
+      it(generateTestTitle(test), () => {
         expect(() => validValidator(test)).to.not.throw();
-      });
-    });
+      }),
+    );
   });
 
   describe('invalidValidator', () => {
-    data.forEach(test => {
-      return it(generateTestTitle(test), () => {
+    data.forEach((test) =>
+      it(generateTestTitle(test), () => {
         expect(() => invalidValidator(test)).to.throw(ValidationError, 'invalid input');
-      });
-    });
+      }),
+    );
   });
 
   describe('fieldValidator', () => {
@@ -53,19 +53,19 @@ describe('Validators', () => {
     it('invalid inputMapper function', () => {
       const isOldEnoughValidator = fieldValidator(
         "user isn't old enough",
-        flag => flag,
+        (flag) => flag,
         () => true,
       );
       expect(() => isOldEnoughValidator(80)).to.throw(ValidationError, 'inputMapper');
     });
     it('invalid input type should equal undefined', () => {
-      const testValidator = fieldValidator('regex test', predicates.isString, input =>
+      const testValidator = fieldValidator('regex test', predicates.isString, (input) =>
         /test/.test(input),
       );
       expect(testValidator(12)).to.equal(undefined);
     });
     it('invalid input to regex should test should evaluates to false ', () => {
-      const testValidator = fieldValidator('regex test', predicates.isString, input =>
+      const testValidator = fieldValidator('regex test', predicates.isString, (input) =>
         /test/.test(input),
       );
       expect(testValidator('12')).to.equal(false);

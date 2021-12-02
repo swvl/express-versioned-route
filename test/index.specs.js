@@ -5,9 +5,9 @@ const { expect } = require('chai');
 const express = require('express');
 const { versionsDef } = require('../index');
 
-const removeEmptyProps = input => {
+const removeEmptyProps = (input) => {
   const obj = clone(input);
-  Object.keys(obj).forEach(key => (obj[key] === undefined ? delete obj[key] : {}));
+  Object.keys(obj).forEach((key) => (obj[key] === undefined ? delete obj[key] : {}));
   return obj;
 };
 
@@ -17,11 +17,11 @@ const process = (name, req) => {
   }
   req.processingOrder.push(name);
 };
-const mwDef = name => (req, res, next) => {
+const mwDef = (name) => (req, res, next) => {
   process(name, req);
   next();
 };
-const searchHandler = version => (req, res) => {
+const searchHandler = (version) => (req, res) => {
   process(version, req);
   res.status(200).send(JSON.stringify(req.processingOrder));
 };
@@ -40,7 +40,7 @@ const searchHandlerV3 = searchHandler('v3');
 const searchHandlerV4 = searchHandler('v4');
 
 describe('versionsDef', () => {
-  const defineNewApp = localOptions => {
+  const defineNewApp = (localOptions) => {
     const globalOptions = {
       allowClientRequestFallbackToDefaultVersion: true,
     };
@@ -69,8 +69,8 @@ describe('versionsDef', () => {
     return app;
   };
 
-  const runTestCase = app => test =>
-    it(test.title, done => {
+  const runTestCase = (app) => (test) =>
+    it(test.title, (done) => {
       request(app)
         .get('/search')
         .set(removeEmptyProps(test.config))
@@ -128,25 +128,23 @@ describe('versionsDef', () => {
       ['ioS', 999, true, ['mw1', 'mw2', 'dynamicSearchMW1', 'dynamicSearchMW2', 'v2']],
       ['IoS', 999, true, ['mw1', 'mw2', 'dynamicSearchMW1', 'dynamicSearchMW2', 'v2']],
     ]
-      .map(testAr => {
-        return {
-          title: `${testAr[0]}-${testAr[1]} should processed by ${testAr[2] ? testAr[3] : '404'}`,
-          config: {
-            'device-os': testAr[0],
-            'build-number': testAr[1],
-          },
-          shouldSuccess: testAr[2],
-          expectedResponseCode: testAr[2] ? 200 : 404,
-          expectedResponse: JSON.stringify(testAr[3]),
-        };
-      })
+      .map((testAr) => ({
+        title: `${testAr[0]}-${testAr[1]} should processed by ${testAr[2] ? testAr[3] : '404'}`,
+        config: {
+          'device-os': testAr[0],
+          'build-number': testAr[1],
+        },
+        shouldSuccess: testAr[2],
+        expectedResponseCode: testAr[2] ? 200 : 404,
+        expectedResponse: JSON.stringify(testAr[3]),
+      }))
       .forEach(runTestCase(app));
   });
 
   describe('strict mobile headers', () => {
     const app = defineNewApp({
       allowClientRequestFallbackToDefaultVersion: false,
-      onDeprecated: versionName => {
+      onDeprecated: (versionName) => {
         // eslint-disable-next-line no-console
         console.log(`WARNING: received a call to a deprecated version: ${versionName}`);
       },
@@ -194,24 +192,20 @@ describe('versionsDef', () => {
       ['ioS', 999, true, ['mw1', 'mw2', 'dynamicSearchMW1', 'dynamicSearchMW2', 'v2']],
       ['IoS', 999, true, ['mw1', 'mw2', 'dynamicSearchMW1', 'dynamicSearchMW2', 'v2']],
     ]
-      .map(testAr => {
-        return {
-          title: `${testAr[0]}-${testAr[1]} should processed by ${testAr[2] ? testAr[3] : '404'}`,
-          config: {
-            'device-os': testAr[0],
-            'build-number': testAr[1],
-          },
-          shouldSuccess: testAr[2],
-          expectedResponseCode: testAr[2] ? 200 : 404,
-          expectedResponse: JSON.stringify(testAr[3]),
-        };
-      })
+      .map((testAr) => ({
+        title: `${testAr[0]}-${testAr[1]} should processed by ${testAr[2] ? testAr[3] : '404'}`,
+        config: {
+          'device-os': testAr[0],
+          'build-number': testAr[1],
+        },
+        shouldSuccess: testAr[2],
+        expectedResponseCode: testAr[2] ? 200 : 404,
+        expectedResponse: JSON.stringify(testAr[3]),
+      }))
       .forEach(runTestCase(app));
   });
 
-  const toLowerCase = str => {
-    return str ? str.toLowerCase() : undefined;
-  };
+  const toLowerCase = (str) => (str ? str.toLowerCase() : undefined);
 
   describe('accept-version header', () => {
     const app = defineNewApp();
@@ -221,22 +215,20 @@ describe('versionsDef', () => {
       ['superSearch', true, ['mw1', 'mw2', 'v3']],
       [undefined, true, ['mw1', 'mw2', 'v3']],
       ['deepSearch', true, ['mw1', 'mw2', 'deepSearchMW', 'v4']],
-    ].forEach(testCase => {
+    ].forEach((testCase) => {
       const newTestCases = [clone(testCase), clone(testCase), clone(testCase)];
       newTestCases[1][0] = toLowerCase(newTestCases[1][0]);
       newTestCases[2][0] = toLowerCase(newTestCases[2][0]);
       newTestCases
-        .map(testAr => {
-          return {
-            title: `${testAr[0]} should processed by ${testAr[1] ? testAr[2] : '404'}`,
-            config: {
-              'accept-version': testAr[0],
-            },
-            shouldSuccess: testAr[1],
-            expectedResponseCode: testAr[1] ? 200 : 404,
-            expectedResponse: JSON.stringify(testAr[2]),
-          };
-        })
+        .map((testAr) => ({
+          title: `${testAr[0]} should processed by ${testAr[1] ? testAr[2] : '404'}`,
+          config: {
+            'accept-version': testAr[0],
+          },
+          shouldSuccess: testAr[1],
+          expectedResponseCode: testAr[1] ? 200 : 404,
+          expectedResponse: JSON.stringify(testAr[2]),
+        }))
         .forEach(runTestCase(app));
     });
   });
@@ -281,7 +273,7 @@ describe('Invalid config', () => {
           deepSearch: [deepSearchMW, searchHandlerV4],
         },
       ],
-    ].forEach(testCase => {
+    ].forEach((testCase) => {
       it(testCase[0], () => {
         const testFunc = () => {
           versionsDef()({

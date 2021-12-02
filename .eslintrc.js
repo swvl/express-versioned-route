@@ -1,5 +1,4 @@
 module.exports = {
-  rules: {},
   extends: ['airbnb-base', 'prettier'],
   plugins: ['prettier'],
   parserOptions: {
@@ -9,7 +8,7 @@ module.exports = {
     node: true,
     es6: true,
     commonjs: true,
-    mocha: true
+    mocha: true,
   },
   rules: {
     'prettier/prettier': 'error',
@@ -17,13 +16,13 @@ module.exports = {
     'no-unused-vars': ['error', { argsIgnorePattern: 'next' }],
     'no-use-before-define': ['error', { functions: false }],
   },
-  "overrides": [
+  overrides: [
     {
-      "files": ["runkit-example.js"],
-      "rules": {
-        "import/no-unresolved": "off",
-        "no-unused-expressions": "off"
-      }
-    }
+      files: ['runkit-example.js'],
+      rules: {
+        'import/no-unresolved': 'off',
+        'no-unused-expressions': 'off',
+      },
+    },
   ],
 };
