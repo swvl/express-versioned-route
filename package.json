@@ -34,7 +34,7 @@
   "dependencies": {},
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/git": "^9.0.1",
     "chai": "^4.3.4",
     "codecov": "^3.8.3",
     "commitizen": "^4.2.4",
