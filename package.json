@@ -32,7 +32,9 @@
   },
   "author": "Swvl <opensource@swvl.com>",
   "license": "Apache-2.0",
-  "dependencies": {},
+  "dependencies": {
+    "ansi-regex": "^6.0.1"
+  },
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
