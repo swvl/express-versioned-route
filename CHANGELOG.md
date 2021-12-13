@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/swvl/express-versioned-route/compare/v3.0.2...v3.0.3) (2021-12-13)
+
+
+### Bug Fixes
+
+* minor code smells ([08a2406](https://github.com/swvl/express-versioned-route/commit/08a2406d5c0f072a00da595b8ed6cceb9dcdb222))
+
 ## [3.0.2](https://github.com/swvl/express-versioned-route/compare/v3.0.1...v3.0.2) (2021-12-13)
 
 ## [3.0.1](https://github.com/swvl/express-versioned-route/compare/v3.0.0...v3.0.1) (2021-12-13)
