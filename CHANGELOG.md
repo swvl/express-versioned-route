@@ -1,3 +1,5 @@
+## [3.0.2](https://github.com/swvl/express-versioned-route/compare/v3.0.1...v3.0.2) (2021-12-13)
+
 ## [3.0.1](https://github.com/swvl/express-versioned-route/compare/v3.0.0...v3.0.1) (2021-12-13)
 
 # [3.0.0](https://github.com/swvl/express-versioned-route/compare/v2.2.4...v3.0.0) (2021-12-13)
