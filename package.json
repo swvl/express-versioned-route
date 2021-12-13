@@ -1,6 +1,6 @@
 {
   "name": "@swvl/express-versioned-route",
-  "version": "2.2.4",
+  "version": "3.0.0",
   "description": "Simple express.js 4.x extension, to add support for versioned routes.",
   "main": "index.js",
   "keywords": [
@@ -16,7 +16,7 @@
   },
   "private": false,
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com",
+    "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
   "engines": {

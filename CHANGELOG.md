@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/swvl/express-versioned-route/compare/v2.2.4...v3.0.0) (2021-12-13)
+
+
+### chore
+
+* **package manager:** migration from npm to github ([c939a1e](https://github.com/swvl/express-versioned-route/commit/c939a1ea56ceb96982139cd35c7ab2f3f4a5b8e3))
+
+
+### BREAKING CHANGES
+
+* **package manager:** add `@swvl:registry=https://npm.pkg.github.com` to your .npmrc
+
 ## [2.2.4](https://github.com/swvl/express-versioned-route/compare/v2.2.3...v2.2.4) (2021-12-02)
 
 
