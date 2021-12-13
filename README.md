@@ -28,8 +28,9 @@ Simple express.js 4.x extension, to add support for versioned routes.
 - Client can choose specific version using `accept-version` header
 
 ## Install
+Add `@swvl:registry=https://npm.pkg.github.com` to your .npmrc file
 
-`npm install @swvl/express-versioned-route`
+Then install the package normally `npm install @swvl/express-versioned-route`
 
 ## Usage
 
