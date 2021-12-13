@@ -4,6 +4,7 @@ const request = require('supertest');
 const { expect } = require('chai');
 const express = require('express');
 const { versionsDef } = require('../index');
+const { ValidationError } = require('../lib/validators');
 
 const removeEmptyProps = (input) => {
   const obj = clone(input);
@@ -274,13 +275,14 @@ describe('Invalid config', () => {
         },
       ],
     ].forEach((testCase) => {
-      it(testCase[0], () => {
-        const testFunc = () => {
-          versionsDef()({
-            versions: clone(testCase[1]),
-          });
-        };
-        expect(testFunc).to.throw();
+      const testCaseTitle = testCase[0];
+      const testCaseData = { versions: clone(testCase[1]) };
+      it(testCaseTitle, () => {
+        try {
+          versionsDef()(testCaseData);
+        } catch (error) {
+          expect(error).to.be.an.instanceof(ValidationError);
+        }
       });
     });
   });
