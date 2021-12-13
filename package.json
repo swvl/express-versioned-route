@@ -16,6 +16,7 @@
   },
   "private": false,
   "publishConfig": {
+    "registry":"https://npm.pkg.github.com",
     "access": "public"
   },
   "engines": {
